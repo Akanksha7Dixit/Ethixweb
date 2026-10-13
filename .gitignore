@@ -1,0 +1,19 @@
+
+# Secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Installed dependencies
+**/node_modules/
+
+# Generated frontend build
+/frontend/dist/
+
+# Logs
+*.log
+
+# Local editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db

@@ -1,6 +1,6 @@
 :root{--bg:#09090b;--bg2:#101013;--tx:#f4f1ec;--mu:#9b9ba4;--line:rgba(255,255,255,.1);--card:rgba(255,255,255,.04);--acc:#ff4d5a;--red:#e11d2e;--gold:#d9b26a;--serif:"Instrument Serif",Georgia,"Noto Serif Devanagari",serif}
 .light{--bg:#f4efe7;--bg2:#ebe4d8;--tx:#15110e;--mu:#6a6258;--line:rgba(21,17,14,.14);--card:rgba(21,17,14,.035);--acc:#c8102e}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#09090b;color:var(--tx);font:16px/1.65 "Inter Variable",system-ui,-apple-system,"Segoe UI","Noto Sans Devanagari",sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.05;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 img{max-width:100%;height:auto}a{color:inherit}h1,h2,h3{margin:0 0 .5em;font-weight:500;letter-spacing:-.02em;line-height:1.05}
@@ -10,8 +10,6 @@ em{font-style:italic;color:var(--acc)}p{margin:0 0 1em}.mu,.note{color:var(--mu)
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .progress{position:fixed;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,var(--red),var(--gold));transform-origin:0 50%;z-index:120}
 .curtain{position:fixed;inset:0;z-index:110;background:#0a0a0c;transform-origin:top;pointer-events:none;border-bottom:3px solid var(--red)}
-.cur-dot,.cur-ring{position:fixed;left:0;top:0;pointer-events:none;z-index:300;border-radius:50%}.cur-dot{width:6px;height:6px;margin:-3px 0 0 -3px;background:#fff;mix-blend-mode:difference}
-.cur-ring{width:38px;height:38px;margin:-19px 0 0 -19px;border:1px solid rgba(255,255,255,.6);mix-blend-mode:difference;transition:scale .3s,background .3s}.cur-ring.h{scale:1.7;background:rgba(255,255,255,.9)}
 .nav{position:fixed;top:0;left:0;right:0;z-index:70;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
 .nav.scrolled{background:rgba(9,9,11,.7);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-color:rgba(255,255,255,.08)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:18px;color:#f4f1ec}

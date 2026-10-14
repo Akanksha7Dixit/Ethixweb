@@ -1,12 +1,10 @@
 import {useRef,useEffect,useState} from 'react';
 import {Link} from 'react-router-dom';
-import Lenis from 'lenis';
 import {m,useMotionValue,useSpring,useInView,animate,useScroll,useTransform,AnimatePresence} from 'framer-motion';
 import {Plus,ArrowUpRight,Check} from 'lucide-react';
 export const ease=[.22,1,.36,1];
 export function useMedia(q){const [v,setV]=useState(()=>typeof window!=='undefined'&&matchMedia(q).matches);
  useEffect(()=>{const mq=matchMedia(q),f=()=>setV(mq.matches);f();mq.addEventListener('change',f);return()=>mq.removeEventListener('change',f)},[q]);return v}
-export function useSmooth(){useEffect(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;const l=new Lenis({lerp:.09});let id;const raf=t=>{l.raf(t);id=requestAnimationFrame(raf)};id=requestAnimationFrame(raf);return()=>{cancelAnimationFrame(id);l.destroy()}},[])}
 export function useTitle(t,d){useEffect(()=>{document.title=t;if(d)document.querySelector('meta[name=description]')?.setAttribute('content',d)},[t,d])}
 export function Reveal({children,delay=0,y=30,className,as='div'}){const C=m[as];
  return <C className={className} initial={{opacity:0,y}} whileInView={{opacity:1,y:0}} viewport={{once:true,margin:'-60px'}} transition={{duration:.9,ease,delay}}>{children}</C>}
@@ -24,11 +22,6 @@ export function IstClock(){const [t,setT]=useState('');
  useEffect(()=>{const f=()=>setT(new Date().toLocaleTimeString('en-IN',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',hour12:true}));f();const i=setInterval(f,20000);return()=>clearInterval(i)},[]);
  return <span className="clock"><i className="dot"/>IST {t||'--:--'}</span>}
 export const Jaali=()=><div className="jaali" aria-hidden="true"/>;
-export function Cursor(){const x=useMotionValue(-100),y=useMotionValue(-100),sx=useSpring(x,{stiffness:420,damping:36,mass:.5}),sy=useSpring(y,{stiffness:420,damping:36,mass:.5}),[h,setH]=useState(false),[on,setOn]=useState(false);
- useEffect(()=>{if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;setOn(true);
-  const mv=e=>{x.set(e.clientX);y.set(e.clientY);setH(!!e.target.closest?.('a,button,[data-cursor],input,textarea,label'))};
-  window.addEventListener('mousemove',mv,{passive:true});return()=>window.removeEventListener('mousemove',mv)},[x,y]);
- return on?<><m.div className="cur-dot" style={{x,y}}/><m.div className={'cur-ring'+(h?' h':'')} style={{x:sx,y:sy}}/></>:null}
 function W({p,a,b,children}){const o=useTransform(p,[a,b],[.14,1]);return <m.span style={{opacity:o}}>{children} </m.span>}
 export function ScrollText({text}){const r=useRef(null),{scrollYProgress:p}=useScroll({target:r,offset:['start 85%','end 50%']}),w=text.split(' ');
  return <p ref={r} className="stext" aria-label={text}>{w.map((x,i)=><W key={i} p={p} a={i/w.length} b={(i+1)/w.length}>{x}</W>)}</p>}
@@ -58,7 +51,8 @@ export function IndiaMap(){const box=useRef(null),cv=useRef(null),act=useRef(-1)
      const k=((t/2400)+i*.137)%1,u=1-k,px=u*u*hx+2*u*k*cx+k*k*x,py=u*u*hy+2*u*k*cy+k*k*y;ctx.beginPath();ctx.arc(px,py,2.2,0,7);ctx.fillStyle='#ffd7da';ctx.fill()}
     ctx.beginPath();ctx.arc(x,y,on||!i?5:3.2,0,7);ctx.fillStyle='#e11d2e';ctx.fill();
     if(on||!i){ctx.beginPath();ctx.arc(x,y,9+((t/90)%10),0,7);ctx.strokeStyle='rgba(255,77,90,.35)';ctx.lineWidth=1;ctx.stroke();ctx.fillStyle='#fff';ctx.fillText(ct.n,x+12,y+4)}})};
-  const loop=t=>{if(!vis){raf=0;return}draw(t);raf=requestAnimationFrame(loop)};
+  let lastFrame=0;
+  const loop=t=>{if(!vis){raf=0;return}if(t-lastFrame>=1000/30){draw(t);lastFrame=t}raf=requestAnimationFrame(loop)};
   build();const ro=new ResizeObserver(build);ro.observe(b);
   const io=new IntersectionObserver(([e])=>{vis=e.isIntersecting;if(vis&&!raf&&!reduce)raf=requestAnimationFrame(loop)});io.observe(b);
   return()=>{ro.disconnect();io.disconnect();cancelAnimationFrame(raf)}},[]);

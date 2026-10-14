@@ -73,3 +73,79 @@ select,.adm input,.bar input{width:100%;background:rgba(255,255,255,.04);color:v
 @media(min-width:720px){.hero-g{grid-template-columns:1.4fr 1fr}.two{grid-template-columns:1fr 1fr;gap:70px}.form-g{grid-template-columns:.8fr 1.2fr}.row2{grid-template-columns:1fr 1fr}.ledger{grid-template-columns:repeat(4,1fr)}.ledger>div{border-bottom:0;border-right:1px solid var(--line);padding-left:24px}.ledger>div:first-child{padding-left:0}.ledger>div:last-child{border:0}.pillars{grid-template-columns:repeat(3,1fr)}.pillars.p4{grid-template-columns:repeat(2,1fr)}.foot-grid{grid-template-columns:2fr 1fr 1fr}.foot-bar{flex-direction:row;justify-content:space-between}.bar{grid-template-columns:1fr 220px}.ctl{grid-template-columns:200px 1fr auto}.clock{display:inline-flex}.hide-m{display:inline}.idx button{grid-template-columns:50px 1fr 200px 28px}.idx .tg{display:block}.idx-bi{grid-template-columns:1.3fr 1fr;padding-left:66px}}
 @media(min-width:980px){.burger{display:none}.nav-links{display:flex}.sec{padding:150px 0}.hero{padding-top:150px}.hero.sm{padding:210px 0 50px}.reel-st{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:90px 0 40px}.reel-t{overflow:visible;scroll-snap-type:none;padding-left:max(20px,calc((100vw - 1240px)/2));will-change:transform}.pillars.p4{grid-template-columns:repeat(4,1fr)}.sticky-h{position:sticky;top:130px}}
 @media(prefers-reduced-motion:reduce){.marq-in,.dot,.aurora{animation:none}}
+
+/* Keep the visual system consistent and deliberately understated. */
+:root{--bg:#111113;--bg2:#111113;--tx:#f5f5f5;--mu:#b4b4ba;--line:rgba(255,255,255,.14);--card:rgba(255,255,255,.035);--acc:#f05b65;--red:#d92d3a;--gold:#d4a9a0}
+.light{--bg:#111113;--bg2:#111113;--tx:#f5f5f5;--mu:#b4b4ba;--line:rgba(255,255,255,.14);--card:rgba(255,255,255,.035);--acc:#f05b65}
+body{background:var(--bg);color:var(--tx)}
+body::after,.progress,.jaali,.aurora{display:none}
+.hero,.sec,.deep,.reel,.foot,.cta-s{background:var(--bg);color:var(--tx)}
+.hero{padding:150px 0 76px}
+.hero.sm{padding:150px 0 48px}
+.sec{padding:76px 0}
+.nav{background:rgba(17,17,19,.96);border-color:var(--line);backdrop-filter:none;-webkit-backdrop-filter:none}
+.nav.scrolled{background:rgba(17,17,19,.96);backdrop-filter:none;-webkit-backdrop-filter:none}
+.nav-in{color:var(--tx)}
+.nav-links{gap:4px;padding:0;border:0;border-radius:0;background:none;backdrop-filter:none}
+.nav-links a{color:var(--mu);padding:8px 12px;border-radius:4px}
+.nav-links a.active{color:var(--tx)}
+.navpill{inset:0;border-radius:4px;background:rgba(255,255,255,.08)}
+.burger{width:42px;height:42px;border-radius:6px;background:transparent;border-color:var(--line)}
+.sheet{background:var(--bg)}
+.sheet a:not(.btn){font-family:"Inter Variable",sans-serif;font-size:2rem;font-weight:500}
+.btn{background:var(--red);border:1px solid var(--red);border-radius:6px;box-shadow:none}
+.btn:hover{filter:brightness(1.08);box-shadow:none}
+.btn.ghost{border-color:var(--line);background:transparent}
+.chat,.pc,.cta,.formc,.card,.rc{border-radius:6px;box-shadow:none;backdrop-filter:none}
+.spot::before{display:none}
+.simple-services{display:grid;grid-template-columns:1fr;gap:1px;margin-top:32px;border:1px solid var(--line);background:var(--line)}
+.simple-service{position:relative;min-height:0;padding:24px;background:var(--bg)}
+.service-number{position:absolute;right:24px;top:24px;color:var(--mu);font-size:.8rem}
+.simple-service .ico{width:38px;height:38px;border-radius:6px;background:transparent;border-color:var(--line);color:var(--acc)}
+.simple-service h3{margin:22px 0 8px;font-size:1.15rem}
+.simple-service p{color:var(--mu);margin:0 0 14px}
+.simple-service small{color:var(--acc);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em}
+.simple-steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.simple-steps li{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
+.simple-steps li>span,.simple-principles h3 span{color:var(--acc);font-size:.82rem;font-weight:600}
+.simple-steps h3{margin:0 0 6px;font-size:1.05rem}
+.simple-steps p,.simple-principles p{margin:0;color:var(--mu)}
+.simple-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:32px 0;border-block:1px solid var(--line)}
+.simple-metrics>div{padding:20px 12px 20px 0;border-bottom:1px solid var(--line)}
+.simple-metrics b{display:block;font-size:clamp(1.8rem,4vw,2.7rem);font-weight:500}
+.simple-metrics span{color:var(--mu);font-size:.86rem}
+.simple-principles{display:grid;gap:24px}
+.simple-principles h3{font-size:1.05rem}
+.simple-cta{padding:32px 0;border-top:1px solid var(--line)}
+.simple-cta p{color:var(--mu);margin-bottom:24px}
+.idx .tt{font-family:"Inter Variable",sans-serif;font-size:clamp(1.15rem,2.4vw,1.6rem);letter-spacing:0}
+.idx button{padding-block:20px}
+.idx .no,.idx-bi li svg,.assure svg,.hi{color:var(--acc)}
+.cities button,.choice button,.tabs button{border-radius:6px}
+.tabs{border-radius:6px}
+.pill{border-radius:4px}
+.cta{padding:36px 0;border:0;border-top:1px solid var(--line);border-radius:0;background:none;color:var(--tx);text-align:left}
+.cta p{margin:0 0 24px;color:var(--mu)}
+.formc{background:transparent;border:1px solid var(--line);padding:24px}
+.fld input,.fld textarea{border-bottom-color:var(--line)}
+select,.adm input,.bar input,.adm-login input{border-radius:6px}
+.foot{padding-top:48px}
+.foot-big{display:none}
+.foot a:hover{color:var(--acc)}
+.foot-bar{margin-top:24px}
+.curtain{display:none}
+.rc{border-radius:6px}
+@media(min-width:720px){
+ .simple-services{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .simple-metrics{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .simple-metrics>div{border-bottom:0;border-right:1px solid var(--line);padding-left:16px}
+ .simple-metrics>div:first-child{padding-left:0}
+ .simple-metrics>div:last-child{border-right:0}
+ .simple-principles{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+}
+@media(min-width:980px){
+ .hero{padding-top:170px}
+ .hero.sm{padding:180px 0 48px}
+ .sec{padding:88px 0}
+ .simple-services{grid-template-columns:repeat(3,minmax(0,1fr))}
+}

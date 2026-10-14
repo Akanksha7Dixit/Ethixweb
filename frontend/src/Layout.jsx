@@ -1,15 +1,14 @@
 import {useEffect,useState} from 'react';
 import {Link,NavLink,useLocation} from 'react-router-dom';
-import {m,AnimatePresence,useScroll,useSpring} from 'framer-motion';
+import {m,AnimatePresence} from 'framer-motion';
 import {Menu,X} from 'lucide-react';
 import {Btn,IstClock,ease} from './ui.jsx';
 const links=[['/','Home'],['/services','Services'],['/about','About'],['/contact','Contact']];
 export function Nav(){const [open,setOpen]=useState(false),loc=useLocation(),[sc,setSc]=useState(false);
- const {scrollYProgress}=useScroll(),w=useSpring(scrollYProgress,{stiffness:120,damping:30});
  useEffect(()=>{setOpen(false)},[loc.pathname]);
  useEffect(()=>{const f=()=>setSc(window.scrollY>40);f();window.addEventListener('scroll',f,{passive:true});return()=>window.removeEventListener('scroll',f)},[]);
  useEffect(()=>{document.body.style.overflow=open?'hidden':''},[open]);
- return <><m.div className="progress" style={{scaleX:w}}/>
+ return <>
  <header className={'nav'+(sc?' scrolled':'')}><div className="wrap nav-in">
   <Link to="/" aria-label="Ethixweb home"><img src="/logo.svg" width="180" height="44" alt="Ethixweb"/></Link>
   <nav className="nav-links" aria-label="Primary">{links.map(([to,l])=><NavLink key={to} to={to} end={to==='/'}>{({isActive})=><span>{l}{isActive&&<m.i layoutId="navpill" className="navpill" transition={{type:'spring',stiffness:420,damping:34}}/>}</span>}</NavLink>)}</nav>

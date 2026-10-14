@@ -1,17 +1,15 @@
 import {useRef,useEffect,useState} from 'react';
 import {Link} from 'react-router-dom';
-import {m,useMotionValue,useSpring,useInView,animate,useScroll,useTransform,AnimatePresence} from 'framer-motion';
+import {m,useInView,animate,useScroll,useTransform,AnimatePresence} from 'framer-motion';
 import {Plus,ArrowUpRight,Check} from 'lucide-react';
 export const ease=[.22,1,.36,1];
 export function useMedia(q){const [v,setV]=useState(()=>typeof window!=='undefined'&&matchMedia(q).matches);
  useEffect(()=>{const mq=matchMedia(q),f=()=>setV(mq.matches);f();mq.addEventListener('change',f);return()=>mq.removeEventListener('change',f)},[q]);return v}
 export function useTitle(t,d){useEffect(()=>{document.title=t;if(d)document.querySelector('meta[name=description]')?.setAttribute('content',d)},[t,d])}
-export function Reveal({children,delay=0,y=30,className,as='div'}){const C=m[as];
- return <C className={className} initial={{opacity:0,y}} whileInView={{opacity:1,y:0}} viewport={{once:true,margin:'-60px'}} transition={{duration:.9,ease,delay}}>{children}</C>}
-export function Magnetic({children,strength=.3}){const r=useRef(null),x=useMotionValue(0),y=useMotionValue(0),sx=useSpring(x,{stiffness:220,damping:16}),sy=useSpring(y,{stiffness:220,damping:16});
- return <m.span ref={r} className="mag" style={{x:sx,y:sy}} onMouseMove={e=>{const b=r.current.getBoundingClientRect();x.set((e.clientX-b.left-b.width/2)*strength);y.set((e.clientY-b.top-b.height/2)*strength)}} onMouseLeave={()=>{x.set(0);y.set(0)}}>{children}</m.span>}
-export function Spot({children,className='',...p}){const mv=e=>{const b=e.currentTarget.getBoundingClientRect();e.currentTarget.style.setProperty('--mx',e.clientX-b.left+'px');e.currentTarget.style.setProperty('--my',e.clientY-b.top+'px')};
- return <div className={'spot '+className} onMouseMove={mv} {...p}>{children}</div>}
+export function Reveal({children,className,as='div'}){const C=as;
+ return <C className={className}>{children}</C>}
+export function Magnetic({children}){return <span className="mag">{children}</span>}
+export function Spot({children,className='',...p}){return <div className={'spot '+className} {...p}>{children}</div>}
 export function Btn({to,href,ghost,children,...p}){const cls='btn'+(ghost?' ghost':''),in_=<>{children}<ArrowUpRight size={17}/></>;
  return <Magnetic>{to?<Link to={to} className={cls} {...p}>{in_}</Link>:<a href={href} className={cls} {...p}>{in_}</a>}</Magnetic>}
 export const Eyebrow=({children})=><p className="eyebrow"><span/>{children}</p>;

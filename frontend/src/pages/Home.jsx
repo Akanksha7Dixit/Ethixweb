@@ -15,12 +15,12 @@ const principles=[
 ];
 
 export default function Home(){
- useTitle('Ethixweb India – We run the tech. You run the business.');
+ useTitle('Ethixweb India – Digital operations for growing businesses.');
  return <>
   <section className="hero">
    <div className="wrap home-hero">
     <Eyebrow>Digital operations · Built for India</Eyebrow>
-    <h1>We run the tech.<br/><em>You run the business.</em></h1>
+    <h1>Digital operations<br/><em>for growing businesses.</em></h1>
     <p className="lead">From WhatsApp AI agents and CRM integrations to fast websites, SEO and ads: one senior team that understands how Indian customers actually buy, call and pay.</p>
     <div className="row"><Btn to="/contact">Get a free consultation</Btn><Btn to="/services" ghost>Explore services</Btn></div>
    </div>
